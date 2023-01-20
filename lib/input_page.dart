@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'icon_context.dart';
 
 class InputPage extends StatefulWidget
 {
@@ -8,6 +10,7 @@ class InputPage extends StatefulWidget
 
 class _InputPageState extends State<InputPage>
 {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,18 +22,46 @@ class _InputPageState extends State<InputPage>
           Expanded(
               child: Row(
                 children: <Widget>[
-                  Expanded(child: ReusableCard(colour: Colors.blue)),
-                  Expanded(child: ReusableCard(colour: Colors.blue)),
+                  Expanded(
+                      child: ReusableCard(
+                        colour: Color(0xFF1D1E33),
+                        icon: FontAwesomeIcons.venus,
+                        label: 'FEMALE',
+                      )
+                  ),
+                  Expanded(
+                      child: ReusableCard(
+                        colour: Color(0xFF1D1E33),
+                        icon: FontAwesomeIcons.mars,
+                        label: 'MALE',
+                      )
+                  ),
             ],
           )),
           Expanded(
-            child: ReusableCard(colour: Colors.blue)
+              child: ReusableCard(
+                colour: Color(0xFF1D1E33),
+                icon: FontAwesomeIcons.venus,
+                label: 'FEMALE',
+              )
           ),
           Expanded(
               child: Row(
                 children: <Widget>[
-                  Expanded(child: ReusableCard(colour: Colors.blue)),
-                  Expanded(child: ReusableCard(colour: Colors.black)),
+                  Expanded(
+                      child: ReusableCard(
+                        colour: Color(0xFF1D1E33),
+                        icon: FontAwesomeIcons.mars,
+                        label: 'MALE',
+                      )
+                  ),
+                  Expanded(
+                      child: ReusableCard(
+                          colour: Color(0xFF1D1E33),
+                          icon: FontAwesomeIcons.venus,
+                          label: 'FEMALE',
+                      )
+                  ),
                 ],
               )
           )
@@ -42,13 +73,20 @@ class _InputPageState extends State<InputPage>
 
 class ReusableCard extends StatelessWidget
 {
-  ReusableCard({required this.colour});
-  Color colour;
+  ReusableCard({required this.colour, required this.icon, required this.label});
+
+  final Color colour;
+  final IconData icon;
+  final String label;
 
   @override
   Widget build(BuildContext context)
   {
     return Container(
+      child: IconContent(
+        icon: icon,
+        label: label
+      ),
       margin: EdgeInsets.all(15.0),
       decoration: BoxDecoration(
         color: colour,
